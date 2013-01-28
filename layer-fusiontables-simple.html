@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Google Maps JavaScript API v3 Example: Fusion Tables Layer</title>
+    <style>
+      html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      }
+
+      #map_canvas {
+      height: 100%;
+      }
+
+      @media print {
+      html, body {
+      height: auto;
+      }
+
+      #map_canvas {
+      height: 650px;
+      }
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+
+      function initialize() {
+
+
+      var brisbane = new google.maps.LatLng(-27.46944,153.021526);
+
+      map = new google.maps.Map(document.getElementById('map_canvas'), {
+      center: brisbane,
+      zoom: 11,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+
+      layer = new google.maps.FusionTablesLayer({
+      query: {
+      select: '\'Geocodable address\'',
+      from: '1iZ1yB3wf967O0hTydiu_lBQOIAF4_Sy3_GEn7EY'
+      }
+      });
+      layer.setMap(map);
+      }
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas"></div>
+  </body>
+</html>
